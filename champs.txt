@@ -1,0 +1,7 @@
+Jinx/adc/jinx.jpg
+Miss Fortune/adc/miss.jpg
+Ashe/adc/ashe.jpg
+Sivir/adc/sivir.jpg
+Kai'Sa/adc/kai.jpg
+Zoe/mage/zoe.jpg
+Nami/mage/nami.jpg
