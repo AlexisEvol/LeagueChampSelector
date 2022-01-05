@@ -3,6 +3,11 @@ Miss Fortune/adc/miss.jpg
 Ashe/adc/ashe.jpg
 Sivir/adc/sivir.jpg
 Kai'Sa/adc/kai.jpg
-Zoe/mage/zoe.jpg
-Nami/mage/nami.jpg
-Ahri/mage/ahri.jpg
+Zoe/supp/zoe.jpg
+Nami/supp/nami.jpg
+Ahri/supp/ahri.jpg
+Lulu/supp/lulu.jpg
+Tristana/adc/trist.jpg
+Annie/supp/annie.jpg
+Swain/supp/swain.jpg
+Gwen/top/gwen.jpg

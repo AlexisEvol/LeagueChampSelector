@@ -29,7 +29,7 @@ public class MainForm extends javax.swing.JFrame {
     public MainForm() {
         initComponents();
     }
-    File file = new File(System.getProperty("user.home") + "\\AppData\\Local\\RandomChampion\\stuff\\champs.txt");
+    File file = new File("src/Main/Champs/champs.txt");
     Champs champion;
     ArrayList<Champs> champs;
 
@@ -44,6 +44,11 @@ public class MainForm extends javax.swing.JFrame {
         lblImage = new javax.swing.JLabel();
         btnRandom = new javax.swing.JButton();
         btnGuess = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        ItemSupp = new javax.swing.JMenuItem();
+        ItemAdc = new javax.swing.JMenuItem();
+        ItemPain = new javax.swing.JMenuItem();
 
         jInternalFrame1.setVisible(true);
 
@@ -97,6 +102,36 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
 
+        jMenu1.setText("Utilities");
+
+        ItemSupp.setText("Supp");
+        ItemSupp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ItemSuppActionPerformed(evt);
+            }
+        });
+        jMenu1.add(ItemSupp);
+
+        ItemAdc.setText("adc");
+        ItemAdc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ItemAdcActionPerformed(evt);
+            }
+        });
+        jMenu1.add(ItemAdc);
+
+        ItemPain.setText("PainBuilder");
+        ItemPain.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ItemPainActionPerformed(evt);
+            }
+        });
+        jMenu1.add(ItemPain);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -129,7 +164,7 @@ public class MainForm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRandom)
                     .addComponent(btnGuess))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -200,8 +235,24 @@ public class MainForm extends javax.swing.JFrame {
         cd.setVisible(true);
     }//GEN-LAST:event_btnGuessActionPerformed
 
+    private void ItemAdcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemAdcActionPerformed
+        // TODO add your handling code here:
+        AdcDialog ad = new AdcDialog(this, true);
+        ad.setVisible(true);
+    }//GEN-LAST:event_ItemAdcActionPerformed
+
+    private void ItemSuppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemSuppActionPerformed
+        // TODO add your handling code here:
+        SuppDialog sd = new SuppDialog(this, true);
+        sd.setVisible(true);
+    }//GEN-LAST:event_ItemSuppActionPerformed
+
+    private void ItemPainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemPainActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ItemPainActionPerformed
+
     public void readImages(String imageName) throws IOException{
-        File imagesFolder = new File(System.getProperty("user.home") + "\\AppData\\Local\\RandomChampion\\images");//Path de la carpeta images
+        File imagesFolder = new File("src/Main/Images");//Path de la carpeta images
         File[] imageFiles = imagesFolder.listFiles();//Variable para guardar las imagenes en un array 
 
         for(int i = 0; i < imageFiles.length; i++){//leemos la cantidad de imagenes en la carpeta
@@ -264,9 +315,14 @@ public class MainForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem ItemAdc;
+    private javax.swing.JMenuItem ItemPain;
+    private javax.swing.JMenuItem ItemSupp;
     private javax.swing.JButton btnGuess;
     private javax.swing.JButton btnRandom;
     private javax.swing.JInternalFrame jInternalFrame1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblChampList;
     private javax.swing.JLabel lblImage;
