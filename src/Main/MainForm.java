@@ -249,6 +249,9 @@ public class MainForm extends javax.swing.JFrame {
 
     private void ItemPainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemPainActionPerformed
         // TODO add your handling code here:
+        
+        PainDialog pd = new PainDialog(this, true);
+        pd.setVisible(true);
     }//GEN-LAST:event_ItemPainActionPerformed
 
     public void readImages(String imageName) throws IOException{
