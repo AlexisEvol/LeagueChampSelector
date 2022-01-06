@@ -1,0 +1,44 @@
+-- Lethality --
+
+You can only use lethality/Armor Penetration items.
+
+--Burts AP--
+
+You can only use ap items that empowers ur abilities or gives more than 75 ap.
+The mythic has to be Luden or Knight Harvester.
+
+--Money Printer--
+
+You have to use First Strike.
+In your build there must be all the items that gives you extra money.
+
+--Life Steal--
+
+Your Runes must have Taste of Blood and Ravenous Hunter.
+In your build there must be all the Life Steal items possibles.
+
+--Covid--
+
+Your build must have all the overtime damage items.
+You must have Ignite.
+
+--Silco--
+
+Your items must have passives that busts ur allies or debuffs enemies.
+
+--Tank/Bruiser--
+
+You can only use ad Bruiser items or only use tank items.
+Your runes can only be Conqueror/Grasp/AfterShock.
+
+--The Inmortal--
+
+You can only use items that gives you over 300 max health.
+
+--Killer Queen--
+
+You can only use attack speed items.
+
+--The Fast--
+
+You can only use movement speed items.

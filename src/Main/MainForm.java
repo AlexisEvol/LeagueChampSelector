@@ -4,6 +4,8 @@ import Main.Champs.Champs;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
+import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
@@ -11,6 +13,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -24,6 +27,15 @@ import javax.swing.ImageIcon;
  *
  * @author alexis
  */
+
+
+/*
+  ,--./,-.
+ / #      \
+|          |
+ \        /
+  `._,._,'
+*/
 public class MainForm extends javax.swing.JFrame {
 
     public MainForm() {
@@ -44,6 +56,8 @@ public class MainForm extends javax.swing.JFrame {
         lblImage = new javax.swing.JLabel();
         btnRandom = new javax.swing.JButton();
         btnGuess = new javax.swing.JButton();
+        txtSecret = new javax.swing.JTextField();
+        btnSecret = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         ItemSupp = new javax.swing.JMenuItem();
@@ -102,6 +116,16 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
 
+        txtSecret.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
+        btnSecret.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnSecret.setText("???");
+        btnSecret.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSecretActionPerformed(evt);
+            }
+        });
+
         jMenu1.setText("Utilities");
 
         ItemSupp.setText("Supp");
@@ -141,21 +165,29 @@ public class MainForm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblChampList, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
                     .addComponent(jScrollPane1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtSecret, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSecret, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(36, 36, 36))
             .addGroup(layout.createSequentialGroup()
                 .addGap(120, 120, 120)
                 .addComponent(btnRandom)
                 .addGap(158, 158, 158)
                 .addComponent(btnGuess)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(119, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(lblChampList)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblChampList)
+                    .addComponent(txtSecret, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSecret))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -254,13 +286,47 @@ public class MainForm extends javax.swing.JFrame {
         pd.setVisible(true);
     }//GEN-LAST:event_ItemPainActionPerformed
 
-    public void readImages(String imageName) throws IOException{
-        File imagesFolder = new File("src/Main/Images");//Path de la carpeta images
-        File[] imageFiles = imagesFolder.listFiles();//Variable para guardar las imagenes en un array 
+    private void btnSecretActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSecretActionPerformed
+        // TODO add your handling code here:
+        
+        if(txtSecret.getText().equals("Xerath") || txtSecret.getText().equals("xerath")){
+            try {
+                readImages("xer.jpg");
+                lblChampList.setForeground(Color.blue);
+                lblChampList.setText("ASCENSION");
+            } catch (IOException ex) {
+                Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        if(txtSecret.getText().equals("Win") || txtSecret.getText().equals("win")){
+            try {
+              Desktop desktop = java.awt.Desktop.getDesktop();
+              URI oURL = new URI("https://www.youtube.com/watch?v=w8C01Vpz8I4&ab_channel=JennyMusic");
+              desktop.browse(oURL);
+            } catch (Exception e) {
+              e.printStackTrace();
+            }
+        }
+        
+        if(txtSecret.getText().equals("Leo") || txtSecret.getText().equals("leo")){
+            try {
+              Desktop desktop = java.awt.Desktop.getDesktop();
+              URI oURL = new URI("https://images-na.ssl-images-amazon.com/images/I/61Bc4WsEsEL.jpg");
+              desktop.browse(oURL);
+            } catch (Exception e) {
+              e.printStackTrace();
+            }
+        }        
+    }//GEN-LAST:event_btnSecretActionPerformed
 
-        for(int i = 0; i < imageFiles.length; i++){//leemos la cantidad de imagenes en la carpeta
+    public void readImages(String imageName) throws IOException{
+        File imagesFolder = new File("src/Main/Images");
+        File[] imageFiles = imagesFolder.listFiles();
+
+        for(int i = 0; i < imageFiles.length; i++){
             if (imageName.equals(imageFiles[i].getName())){
-                BufferedImage bufferedImage = ImageIO.read(imageFiles[i]);//Creamos un buffered reader de la imagen perteneciente a la obra seleccionada
+                BufferedImage bufferedImage = ImageIO.read(imageFiles[i]);
                 ImageIcon imageChampion = resizeImageIcon(bufferedImage, lblImage.getWidth(), lblImage.getHeight());
                 lblImage.setIcon(imageChampion);
             }
@@ -323,6 +389,7 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JMenuItem ItemSupp;
     private javax.swing.JButton btnGuess;
     private javax.swing.JButton btnRandom;
+    private javax.swing.JButton btnSecret;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
@@ -330,5 +397,8 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblChampList;
     private javax.swing.JLabel lblImage;
     private javax.swing.JList<String> lstChamps;
+    private javax.swing.JTextField txtSecret;
     // End of variables declaration//GEN-END:variables
+
+// I love you <3
 }

@@ -6,6 +6,7 @@ package Main;
 
 import Main.Champs.Champs;
 import Main.Builds.Build;
+import Main.Builds.RulesDialog;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
@@ -35,6 +36,7 @@ public class PainDialog extends javax.swing.JDialog {
     File file = new File("src/Main/Builds/build.txt");
     ArrayList<Build> builds;
     Build build;
+    MainForm mf = new MainForm();
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -46,6 +48,7 @@ public class PainDialog extends javax.swing.JDialog {
         btnRandomizer = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         lstBuilds = new javax.swing.JList<>();
+        btnRules = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -56,6 +59,11 @@ public class PainDialog extends javax.swing.JDialog {
 
         lblTitle.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         lblTitle.setText("PAIN BUILDER");
+        lblTitle.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblTitleMouseClicked(evt);
+            }
+        });
 
         lblBuild.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
 
@@ -78,6 +86,13 @@ public class PainDialog extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(lstBuilds);
 
+        btnRules.setText("Rules");
+        btnRules.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRulesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -87,16 +102,25 @@ public class PainDialog extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblTitle)
-                            .addComponent(lblBuild, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblTitle)
+                                    .addComponent(lblBuild, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 3, Short.MAX_VALUE)
+                                .addComponent(lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(105, 105, 105))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addComponent(btnRandomizer)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnRules, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(80, 80, 80)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(219, 219, 219)
-                .addComponent(btnRandomizer)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,7 +134,9 @@ public class PainDialog extends javax.swing.JDialog {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
                     .addComponent(lblImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnRandomizer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRandomizer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRules))
                 .addContainerGap())
         );
 
@@ -132,34 +158,16 @@ public class PainDialog extends javax.swing.JDialog {
                 Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-       
     }//GEN-LAST:event_btnRandomizerActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        try {
-            
-            BufferedReader bf = new BufferedReader(new FileReader(file));
-            builds = new ArrayList<>();
-            
-            while(bf.ready()){
-                
-                String linea = bf.readLine();
-                String[] lineas = linea.split("/");
-                build = new Build(lineas[0], lineas[1]);
-                builds.add(build);
-            }
-            DefaultListModel list = new DefaultListModel();
-            for(Build b: builds) {
-                list.addElement(b.getName());
-            }
-            lstBuilds.setModel(list);
-            }
-            catch (FileNotFoundException fnfe) {
-                fnfe.printStackTrace();
-            } catch (IOException ex) {
-            Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
+        leeBuild();
+        DefaultListModel list = new DefaultListModel();
+        for(Build b: builds) {
+            list.addElement(b.getName());
         }
+        lstBuilds.setModel(list);
     }//GEN-LAST:event_formWindowOpened
 
     private void lstBuildsValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstBuildsValueChanged
@@ -178,6 +186,31 @@ public class PainDialog extends javax.swing.JDialog {
         } 
         
     }//GEN-LAST:event_lstBuildsValueChanged
+
+    private void lblTitleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTitleMouseClicked
+        // TODO add your handling code here:
+        builds.clear();
+        lstBuilds.setSelectedValue(null, true);
+        leeBuild();
+        Build kq = new Build("Killer Queen", "kq.jpg");
+        builds.add(kq);
+        Build king = new Build("The Fast", "fast.jpg");
+        builds.add(king);
+        DefaultListModel list = new DefaultListModel();
+        for(Build b: builds) {
+            list.addElement(b.getName());
+        }
+        lstBuilds.setModel(list);
+        
+    }//GEN-LAST:event_lblTitleMouseClicked
+
+    private void btnRulesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRulesActionPerformed
+        // TODO add your handling code here:
+        
+        RulesDialog rd = new RulesDialog(mf, true);
+        rd.setVisible(true);
+        
+    }//GEN-LAST:event_btnRulesActionPerformed
 
     public void readImages(String imageName) throws IOException{
         File imagesFolder = new File("src/Main/Images/Build");//Path de la carpeta images
@@ -210,6 +243,27 @@ public class PainDialog extends javax.swing.JDialog {
         ImageIcon imageIcon = new ImageIcon(outputImage);
         return imageIcon;
     }    
+    
+    public void leeBuild(){
+        try {
+            
+            BufferedReader bf = new BufferedReader(new FileReader(file));
+            builds = new ArrayList<>();
+            
+            while(bf.ready()){
+                
+                String linea = bf.readLine();
+                String[] lineas = linea.split("/");
+                build = new Build(lineas[0], lineas[1]);
+                builds.add(build);
+            }
+        }
+        catch (FileNotFoundException fnfe) {
+                fnfe.printStackTrace();
+        } catch (IOException ex) {
+            Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -252,6 +306,7 @@ public class PainDialog extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRandomizer;
+    private javax.swing.JButton btnRules;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblBuild;
     private javax.swing.JLabel lblImage;
