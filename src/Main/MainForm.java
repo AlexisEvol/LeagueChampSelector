@@ -303,6 +303,13 @@ public class MainForm extends javax.swing.JFrame {
             CutieDialog cd = new CutieDialog(this, true);
             cd.setVisible(true);
         }
+        if(txtSecret.getText().equals("FFXIV") || txtSecret.getText().equals("ffxiv")){
+            try {
+                readImages("unknown.jpg");
+            } catch (IOException ex) {
+                Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_btnSecretActionPerformed
 
     public void readImages(String imageName) throws IOException{

@@ -33,6 +33,7 @@ public class SuppDialog extends javax.swing.JDialog {
     File file = new File("src/Main/Champs/champs.txt");
     Champs champion;
     ArrayList<Champs> champs;
+    MainForm mf = new MainForm();
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -131,29 +132,10 @@ public class SuppDialog extends javax.swing.JDialog {
         for(int i = 0; i < imageFiles.length; i++){//leemos la cantidad de imagenes en la carpeta
             if (imageName.equals(imageFiles[i].getName())){
                 BufferedImage bufferedImage = ImageIO.read(imageFiles[i]);//Creamos un buffered reader de la imagen perteneciente a la obra seleccionada
-                ImageIcon imageChampion = resizeImageIcon(bufferedImage, lblImage.getWidth(), lblImage.getHeight());
+                ImageIcon imageChampion = mf.resizeImageIcon(bufferedImage, lblImage.getWidth(), lblImage.getHeight());
                 lblImage.setIcon(imageChampion);
             }
         }
-    }
-     
-    public ImageIcon resizeImageIcon (BufferedImage originalImage, int desiredWidth, int desiredHeight) {
-        int newHeight = 0;    
-        int newWidth = 0;
-        float aspectRatio = (float)originalImage.getWidth() / originalImage.getHeight();
-        if (originalImage.getWidth() > originalImage.getHeight()) {
-            newWidth = desiredWidth;
-            newHeight = Math.round( desiredWidth / aspectRatio);    
-        }
-        else {
-            newHeight = desiredHeight;
-            newWidth = Math.round(desiredHeight * aspectRatio);
-        }
-        Image resultingImage = originalImage.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
-        BufferedImage outputImage = new BufferedImage(newWidth, newHeight, BufferedImage.TYPE_INT_RGB);
-        outputImage.getGraphics().drawImage(resultingImage, 0, 0, null);
-        ImageIcon imageIcon = new ImageIcon(outputImage);
-        return imageIcon;
     }
 
     public static void main(String args[]) {
