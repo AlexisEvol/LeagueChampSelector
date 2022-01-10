@@ -11,3 +11,6 @@ Tristana/adc/trist.jpg
 Annie/supp/annie.jpg
 Swain/supp/swain.jpg
 Gwen/top/gwen.jpg
+Samira/adc/sam.jpg
+Neeko/supp/nee.jpg
+Zeri/adc/zeri.jpg

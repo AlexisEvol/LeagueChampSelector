@@ -55,7 +55,6 @@ public class MainForm extends javax.swing.JFrame {
         lstChamps = new javax.swing.JList<>();
         lblImage = new javax.swing.JLabel();
         btnRandom = new javax.swing.JButton();
-        btnGuess = new javax.swing.JButton();
         txtSecret = new javax.swing.JTextField();
         btnSecret = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -78,6 +77,7 @@ public class MainForm extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Champs Randomizer");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -108,14 +108,6 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
 
-        btnGuess.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnGuess.setText("Guess What");
-        btnGuess.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuessActionPerformed(evt);
-            }
-        });
-
         txtSecret.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         btnSecret.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -136,7 +128,7 @@ public class MainForm extends javax.swing.JFrame {
         });
         jMenu1.add(ItemSupp);
 
-        ItemAdc.setText("adc");
+        ItemAdc.setText("Adc");
         ItemAdc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ItemAdcActionPerformed(evt);
@@ -176,9 +168,7 @@ public class MainForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(120, 120, 120)
                 .addComponent(btnRandom)
-                .addGap(158, 158, 158)
-                .addComponent(btnGuess)
-                .addContainerGap(119, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -193,9 +183,7 @@ public class MainForm extends javax.swing.JFrame {
                     .addComponent(lblImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRandom)
-                    .addComponent(btnGuess))
+                .addComponent(btnRandom)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -260,13 +248,6 @@ public class MainForm extends javax.swing.JFrame {
             }
     }//GEN-LAST:event_lstChampsValueChanged
 
-    private void btnGuessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuessActionPerformed
-        // TODO add your handling code here:
-        
-        CutieDialog cd = new CutieDialog(this, true);
-        cd.setVisible(true);
-    }//GEN-LAST:event_btnGuessActionPerformed
-
     private void ItemAdcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemAdcActionPerformed
         // TODO add your handling code here:
         AdcDialog ad = new AdcDialog(this, true);
@@ -317,7 +298,11 @@ public class MainForm extends javax.swing.JFrame {
             } catch (Exception e) {
               e.printStackTrace();
             }
-        }        
+        }
+        if(txtSecret.getText().equals("I feel") || txtSecret.getText().equals("i feel")){
+            CutieDialog cd = new CutieDialog(this, true);
+            cd.setVisible(true);
+        }
     }//GEN-LAST:event_btnSecretActionPerformed
 
     public void readImages(String imageName) throws IOException{
@@ -387,7 +372,6 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JMenuItem ItemAdc;
     private javax.swing.JMenuItem ItemPain;
     private javax.swing.JMenuItem ItemSupp;
-    private javax.swing.JButton btnGuess;
     private javax.swing.JButton btnRandom;
     private javax.swing.JButton btnSecret;
     private javax.swing.JInternalFrame jInternalFrame1;
