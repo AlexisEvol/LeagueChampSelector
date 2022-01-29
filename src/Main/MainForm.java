@@ -62,6 +62,7 @@ public class MainForm extends javax.swing.JFrame {
         ItemSupp = new javax.swing.JMenuItem();
         ItemAdc = new javax.swing.JMenuItem();
         ItemPain = new javax.swing.JMenuItem();
+        itemGame = new javax.swing.JMenuItem();
 
         jInternalFrame1.setVisible(true);
 
@@ -143,6 +144,14 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
         jMenu1.add(ItemPain);
+
+        itemGame.setText("RandomGame");
+        itemGame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemGameActionPerformed(evt);
+            }
+        });
+        jMenu1.add(itemGame);
 
         jMenuBar1.add(jMenu1);
 
@@ -310,7 +319,23 @@ public class MainForm extends javax.swing.JFrame {
                 Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        if(txtSecret.getText().equals("MUDA") || txtSecret.getText().equals("muda")){
+            try {
+              Desktop desktop = java.awt.Desktop.getDesktop();
+              URI oURL = new URI("https://www.youtube.com/watch?v=N0U9SEAGyFI&ab_channel=BruceLee%E2%9C%93");
+              desktop.browse(oURL);
+            } catch (Exception e) {
+              e.printStackTrace();
+            }
+        }
     }//GEN-LAST:event_btnSecretActionPerformed
+
+    private void itemGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemGameActionPerformed
+        // TODO add your handling code here:
+        
+        RandomGameDialog rgd = new RandomGameDialog(this, true);
+        rgd.setVisible(true);
+    }//GEN-LAST:event_itemGameActionPerformed
 
     public void readImages(String imageName) throws IOException{
         File imagesFolder = new File("src/Main/Images");
@@ -381,6 +406,7 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JMenuItem ItemSupp;
     private javax.swing.JButton btnRandom;
     private javax.swing.JButton btnSecret;
+    private javax.swing.JMenuItem itemGame;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
